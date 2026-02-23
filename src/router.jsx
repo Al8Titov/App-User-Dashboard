@@ -19,13 +19,14 @@ export const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="stats" element={<Stats />} loader={statsLoader} />
-        </Route>
+          <Route element={<ProtectedRoute />}>
+      <Route path="/dashboard" element={<Dashboard />}>
+        <Route index element={<Profile />} /> 
+        <Route path="profile" element={<Profile />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="stats" element={<Stats />} loader={statsLoader} />
       </Route>
+    </Route>
     </>
   )
 );

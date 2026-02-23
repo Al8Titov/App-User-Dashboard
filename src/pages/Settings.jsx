@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 export default function Settings() {
   const [name, setName] = useState("");
 
-  // при загрузке страницы берём имя из localStorage
+ 
   useEffect(() => {
     const storedName = localStorage.getItem("userName") || "";
     setName(storedName);

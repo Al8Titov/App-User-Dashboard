@@ -1,18 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard/profile";
 
-const handleLogin = (e) => {
-  e.preventDefault();
-  localStorage.setItem("isAuthenticated", "true");
+  const handleLogin = (e) => {
+    e.preventDefault();
+    localStorage.setItem("isAuthenticated", "true");
 
-  const formData = new FormData(e.target);
-  const email = formData.get("email"); 
-  localStorage.setItem("userEmail", email);
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    localStorage.setItem("userEmail", email);
 
-  navigate("/dashboard/profile");
-};
+    navigate(from, { replace: true }); // возвращаем туда, куда человек хотел изначально
+  };
+	
   return (
     <div>
       <h1>Login</h1>

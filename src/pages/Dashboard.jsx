@@ -1,20 +1,30 @@
-import { Outlet, Link } from "react-router-dom";
 
+    import { Outlet, Link, useNavigate } from "react-router-dom";
 
-export default function Dashboard() {
-  return (
-    <div>
-      <h1>Dashboard</h1>
+    export default function Dashboard() {
+      const navigate = useNavigate();
 
-      <nav>
-        <Link to="profile">Profile</Link> |{" "}
-        <Link to="settings">Settings</Link> |{" "}
-        <Link to="stats">Stats</Link>
-      </nav>
+      const handleLogout = () => {
+        localStorage.removeItem("isAuthenticated");
+         localStorage.removeItem("userName");
+         localStorage.removeItem("userEmail");
+        navigate("/login");
+      };
 
-      <hr />
+      return (
+        <div>
+          <h1>Dashboard</h1>
 
-      <Outlet />
-    </div>
-  );
-}
+          <button onClick={handleLogout}>Logout</button>
+
+          <nav>
+            <Link to="profile">Profile</Link> |{" "}
+            <Link to="settings">Settings</Link> |{" "}
+            <Link to="stats">Stats</Link>
+          </nav>
+
+          <hr />
+          <Outlet />
+        </div>
+      );
+    }
