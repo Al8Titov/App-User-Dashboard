@@ -1,4 +1,4 @@
-// ProtectedRoute.jsx
+
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 export default function ProtectedRoute() {
@@ -10,7 +10,7 @@ export default function ProtectedRoute() {
       <Navigate
         to="/login"
         replace
-        state={{ from: location }}   // передаём, откуда пользователь пытался зайти
+        state={{ from: location }}   
       />
     );
   }

@@ -13,7 +13,7 @@ export default function Login() {
     const email = formData.get("email");
     localStorage.setItem("userEmail", email);
 
-    navigate(from, { replace: true }); // возвращаем туда, куда человек хотел изначально
+    navigate(from, { replace: true }); 
   };
 	
   return (
